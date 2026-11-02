@@ -50,19 +50,26 @@ st.markdown("""
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
 
+    /* Streamlit Default Header Bar */
+    header[data-testid="stHeader"] {
+        background-color: transparent !important;
+        height: 2.8rem !important;
+        z-index: 99 !important;
+    }
+
     /* Main Canvas Background */
     .stApp {
         background-color: #F3F5F8;
         color: #172536;
     }
 
-    /* Compact Layout Container */
+    /* Layout Container - Ample Top Padding to Prevent Header Overlap */
     .block-container {
-        padding-top: 1.0rem;
-        padding-bottom: 2.5rem;
-        padding-left: 2.0rem;
-        padding-right: 2.0rem;
-        max-width: 1480px;
+        padding-top: 3.2rem !important;
+        padding-bottom: 3.0rem !important;
+        padding-left: 2.2rem !important;
+        padding-right: 2.2rem !important;
+        max-width: 1600px !important;
     }
 
     /* =========================================================================
@@ -76,9 +83,10 @@ st.markdown("""
         color: #E2E8F0;
     }
     [data-testid="stSidebar"] .block-container {
-        padding-top: 1.2rem;
-        padding-left: 1.0rem;
-        padding-right: 1.0rem;
+        padding-top: 3.2rem !important;
+        padding-left: 1.2rem !important;
+        padding-right: 1.2rem !important;
+        padding-bottom: 2.0rem !important;
     }
     .sidebar-brand-box {
         display: flex;
@@ -178,11 +186,15 @@ st.markdown("""
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap;
         background: #FFFFFF;
         border: 1px solid #DCE2EA;
         border-radius: 4px;
-        padding: 10px 16px;
+        padding: 12px 18px;
+        margin-top: 0.2rem;
         margin-bottom: 10px;
+        gap: 12px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
     }
     .app-header-title-group {
         display: flex;
@@ -211,6 +223,7 @@ st.markdown("""
         color: #667487;
         display: flex;
         gap: 16px;
+        flex-wrap: wrap;
     }
     .app-header-meta span {
         display: flex;
@@ -227,13 +240,15 @@ st.markdown("""
         border: 1px solid #DCE2EA;
         border-left: 3px solid #3478C7;
         border-radius: 3px;
-        padding: 6px 14px;
-        font-size: 0.77rem;
+        padding: 8px 16px;
+        font-size: 0.78rem;
         color: #667487;
-        margin-bottom: 14px;
+        margin-bottom: 16px;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
+        line-height: 1.45;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
     }
     .governance-strip b {
         color: #142B4A;
@@ -244,34 +259,48 @@ st.markdown("""
        TERMINAL NAVIGATION TABS
        ========================================================================= */
     .stTabs [data-baseweb="tab-list"] {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scrollbar-width: thin !important;
         background-color: #FFFFFF !important;
         border: 1px solid #DCE2EA !important;
         border-radius: 4px !important;
-        padding: 2px !important;
-        gap: 2px !important;
-        box-shadow: none !important;
-        margin-bottom: 14px !important;
+        padding: 3px !important;
+        gap: 4px !important;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+        margin-bottom: 16px !important;
+    }
+    .stTabs [data-baseweb="tab-list"]::-webkit-scrollbar {
+        height: 3px !important;
+    }
+    .stTabs [data-baseweb="tab-list"]::-webkit-scrollbar-thumb {
+        background-color: #CBD5E1 !important;
+        border-radius: 2px !important;
     }
     .stTabs [data-baseweb="tab"] {
-        height: 36px !important;
-        white-space: pre-wrap !important;
+        flex-shrink: 0 !important;
+        height: 38px !important;
+        white-space: nowrap !important;
         background-color: transparent !important;
         border-radius: 3px !important;
-        padding: 6px 12px !important;
+        padding: 7px 16px !important;
         font-weight: 600 !important;
-        font-size: 0.80rem !important;
+        font-size: 0.82rem !important;
         color: #667487 !important;
         border: none !important;
-        transition: all 0.1s ease !important;
+        transition: all 0.15s ease !important;
     }
     .stTabs [data-baseweb="tab"]:hover {
         background-color: #F3F5F8 !important;
-        color: #172536 !important;
+        color: #142B4A !important;
     }
     .stTabs [aria-selected="true"] {
         background-color: #142B4A !important;
         color: #FFFFFF !important;
         border-radius: 3px !important;
+        box-shadow: 0 1px 3px rgba(20, 43, 74, 0.2) !important;
     }
     .stTabs [data-baseweb="tab-highlight"], .stTabs [data-baseweb="tab-border"] {
         display: none !important;
