@@ -1,7 +1,6 @@
 """
 PharmaPulse – Type 2 Diabetes Commercial Market Research & Prescribing Analytics Platform
-Interactive Streamlit Web Application
-Enterprise Healthcare UI/UX Edition
+Bloomberg Terminal × IQVIA Commercial Intelligence × Enterprise SaaS Edition
 """
 import os
 import sys
@@ -34,17 +33,18 @@ from src.survey.survey_design import QUESTIONS_DEFINITION, SURVEY_METADATA
 
 # Page Configuration
 st.set_page_config(
-    page_title="PharmaPulse | T2D Commercial Analytics",
+    page_title="PharmaPulse | T2D Commercial Intelligence",
     page_icon="💊",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
-# Enterprise Healthcare SaaS Styling
+# -----------------------------------------------------------------------------
+# TERMINAL × IQVIA DESIGN SYSTEM (CSS)
+# -----------------------------------------------------------------------------
 st.markdown("""
 <style>
-    /* Google Fonts: Inter */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
     html, body, [class*="css"] {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -52,419 +52,420 @@ st.markdown("""
 
     /* Main Canvas Background */
     .stApp {
-        background-color: #F5F7FB;
-        color: #1E293B;
+        background-color: #F3F5F8;
+        color: #172536;
     }
 
-    /* Container Spacing */
+    /* Compact Layout Container */
     .block-container {
-        padding-top: 1.5rem;
-        padding-bottom: 3.5rem;
-        max-width: 1440px;
+        padding-top: 1.0rem;
+        padding-bottom: 2.5rem;
+        padding-left: 2.0rem;
+        padding-right: 2.0rem;
+        max-width: 1480px;
     }
 
-    /* Top Brand Navigation Header */
-    .app-header-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: #FFFFFF;
-        border: 1px solid #E2E8F0;
-        border-radius: 12px;
-        padding: 18px 24px;
-        margin-bottom: 16px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.02);
-    }
-    .app-header-left {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-    }
-    .app-logo-badge {
-        background: linear-gradient(135deg, #142B4A 0%, #2563EB 100%);
-        width: 46px;
-        height: 46px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.4rem;
-        box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
-    }
-    .app-title-text {
-        font-size: 1.55rem;
-        font-weight: 800;
-        color: #142B4A;
-        letter-spacing: -0.02em;
-        line-height: 1.2;
-    }
-    .app-title-pill {
-        display: inline-block;
-        background: #EFF6FF;
-        color: #2563EB;
-        font-size: 0.72rem;
-        font-weight: 700;
-        padding: 2px 8px;
-        border-radius: 20px;
-        letter-spacing: 0.06em;
-        vertical-align: middle;
-        margin-left: 8px;
-        border: 1px solid #DBEAFE;
-    }
-    .app-subtitle-text {
-        font-size: 0.88rem;
-        color: #64748B;
-        font-weight: 400;
-        margin-top: 2px;
-    }
-    .app-header-badges {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-    }
-    .header-chip {
-        font-size: 0.75rem;
-        font-weight: 600;
-        padding: 4px 10px;
-        border-radius: 6px;
-        background: #F1F5F9;
-        color: #475569;
-        border: 1px solid #E2E8F0;
-        white-space: nowrap;
-    }
-    .header-chip-live {
-        background: #ECFDF5;
-        color: #059669;
-        border: 1px solid #A7F3D0;
-    }
-
-    /* Disclaimer Banner */
-    .disclaimer-banner {
-        display: flex;
-        align-items: flex-start;
-        gap: 12px;
-        background-color: #EFF6FF;
-        border: 1px solid #BFDBFE;
-        border-left: 4px solid #2563EB;
-        padding: 12px 18px;
-        border-radius: 8px;
-        font-size: 0.84rem;
-        color: #1E40AF;
-        margin-bottom: 20px;
-        line-height: 1.45;
-    }
-    .disclaimer-icon {
-        font-size: 1.1rem;
-        margin-top: 1px;
-    }
-
-    /* Sidebar Styling */
+    /* =========================================================================
+       DARK TERMINAL SIDEBAR (#101C2D)
+       ========================================================================= */
     [data-testid="stSidebar"] {
-        background-color: #FFFFFF;
-        border-right: 1px solid #E2E8F0;
+        background-color: #101C2D !important;
+        border-right: 1px solid #1E2E42 !important;
+    }
+    [data-testid="stSidebar"] * {
+        color: #E2E8F0;
     }
     [data-testid="stSidebar"] .block-container {
-        padding-top: 1.8rem;
-        padding-left: 1.2rem;
-        padding-right: 1.2rem;
+        padding-top: 1.2rem;
+        padding-left: 1.0rem;
+        padding-right: 1.0rem;
     }
     .sidebar-brand-box {
         display: flex;
         align-items: center;
-        gap: 12px;
-        padding-bottom: 14px;
-        margin-bottom: 16px;
-        border-bottom: 1px solid #F1F5F9;
+        gap: 10px;
+        padding-bottom: 12px;
+        margin-bottom: 12px;
+        border-bottom: 1px solid #1E2E42;
     }
     .sidebar-brand-icon {
         background: #142B4A;
+        border: 1px solid #3478C7;
         color: #FFFFFF;
-        width: 38px;
-        height: 38px;
-        border-radius: 8px;
+        width: 32px;
+        height: 32px;
+        border-radius: 4px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.2rem;
+        font-size: 1.05rem;
     }
     .sidebar-brand-title {
-        font-size: 1.15rem;
+        font-size: 1.05rem;
         font-weight: 800;
-        color: #142B4A;
-        line-height: 1.2;
+        color: #FFFFFF;
+        letter-spacing: 0.04em;
+        line-height: 1.1;
     }
-    .sidebar-brand-subtitle {
-        font-size: 0.74rem;
-        color: #64748B;
+    .sidebar-brand-caption {
+        font-size: 0.70rem;
+        color: #8C9BAE;
         font-weight: 500;
+        letter-spacing: 0.02em;
     }
     .sidebar-section-header {
-        font-size: 0.72rem;
+        font-size: 0.68rem;
         font-weight: 700;
-        color: #64748B;
+        color: #8C9BAE;
         text-transform: uppercase;
         letter-spacing: 0.08em;
-        margin-top: 16px;
-        margin-bottom: 10px;
+        margin-top: 14px;
+        margin-bottom: 6px;
+    }
+    [data-testid="stSidebar"] [data-baseweb="select"] > div {
+        background-color: #17263A !important;
+        border: 1px solid #243852 !important;
+        border-radius: 4px !important;
+        color: #FFFFFF !important;
+        font-size: 0.82rem !important;
+    }
+    [data-testid="stSidebar"] [data-baseweb="tag"] {
+        background-color: #1F334E !important;
+        border: 1px solid #3478C7 !important;
+        border-radius: 3px !important;
+        color: #DCE8F5 !important;
+        font-size: 0.76rem !important;
+        font-weight: 500 !important;
+    }
+    [data-testid="stSidebar"] label p {
+        font-size: 0.78rem !important;
+        font-weight: 600 !important;
+        color: #CBD5E1 !important;
+        margin-bottom: 2px !important;
     }
     .sidebar-status-box {
-        background: #F8FAFC;
-        border: 1px solid #E2E8F0;
-        border-radius: 8px;
-        padding: 12px;
-        margin-top: 24px;
-        font-size: 0.78rem;
+        background: #0B1422;
+        border: 1px solid #1E2E42;
+        border-radius: 4px;
+        padding: 10px;
+        margin-top: 20px;
+        font-size: 0.74rem;
+        line-height: 1.4;
     }
     .sidebar-status-indicator {
         display: flex;
         align-items: center;
         gap: 6px;
         font-weight: 700;
-        color: #059669;
+        color: #16845B;
         margin-bottom: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
     }
     .sidebar-status-dot {
-        width: 8px;
-        height: 8px;
+        width: 7px;
+        height: 7px;
         border-radius: 50%;
-        background-color: #10B981;
+        background-color: #16845B;
         display: inline-block;
+        box-shadow: 0 0 4px #16845B;
     }
 
-    /* Segmented Navigation Tabs */
-    .stTabs [data-baseweb="tab-list"] {
-        background-color: #FFFFFF;
-        border: 1px solid #E2E8F0;
-        border-radius: 10px;
-        padding: 5px;
-        gap: 4px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
-        margin-bottom: 20px;
+    /* =========================================================================
+       COMPACT ENTERPRISE HEADER & GOVERNANCE
+       ========================================================================= */
+    .app-header-strip {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #FFFFFF;
+        border: 1px solid #DCE2EA;
+        border-radius: 4px;
+        padding: 10px 16px;
+        margin-bottom: 10px;
     }
-    .stTabs [data-baseweb="tab"] {
-        height: 42px;
-        white-space: pre-wrap;
-        background-color: transparent !important;
-        border-radius: 7px !important;
-        padding: 8px 14px !important;
-        font-weight: 600 !important;
-        font-size: 0.85rem !important;
-        color: #64748B !important;
-        border: none !important;
-        transition: all 0.15s ease-in-out !important;
+    .app-header-title-group {
+        display: flex;
+        align-items: center;
+        gap: 12px;
     }
-    .stTabs [data-baseweb="tab"]:hover {
-        background-color: #F8FAFC !important;
-        color: #142B4A !important;
-    }
-    .stTabs [aria-selected="true"] {
-        background-color: #142B4A !important;
-        color: #FFFFFF !important;
-        box-shadow: 0 2px 4px rgba(20, 43, 74, 0.18) !important;
-    }
-    .stTabs [data-baseweb="tab-highlight"], .stTabs [data-baseweb="tab-border"] {
-        display: none !important;
-    }
-
-    /* Enterprise Metric Cards */
-    [data-testid="stMetric"] {
-        background-color: #FFFFFF;
-        border: 1px solid #E2E8F0;
-        border-radius: 10px;
-        padding: 16px 20px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.02);
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-    [data-testid="stMetric"]:hover {
-        border-color: #CBD5E1;
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
-    }
-    [data-testid="stMetricLabel"] p {
-        font-size: 0.74rem !important;
-        font-weight: 700 !important;
-        color: #64748B !important;
-        text-transform: uppercase !important;
-        letter-spacing: 0.05em !important;
-        margin-bottom: 4px !important;
-    }
-    [data-testid="stMetricValue"] div {
-        font-size: 1.7rem !important;
-        font-weight: 800 !important;
-        color: #142B4A !important;
-        letter-spacing: -0.02em !important;
-    }
-    [data-testid="stMetricDelta"] {
-        font-size: 0.78rem !important;
-        font-weight: 600 !important;
-    }
-
-    /* Section Headers */
-    .section-title {
-        font-size: 1.15rem;
-        font-weight: 700;
+    .app-header-title {
+        font-size: 1.25rem;
+        font-weight: 800;
         color: #142B4A;
-        margin-top: 10px;
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+    }
+    .app-header-tag {
+        font-size: 0.68rem;
+        font-weight: 700;
+        color: #3478C7;
+        background: #DCE8F5;
+        border: 1px solid #BACFE6;
+        padding: 2px 7px;
+        border-radius: 3px;
+        letter-spacing: 0.04em;
+    }
+    .app-header-meta {
+        font-size: 0.78rem;
+        color: #667487;
+        display: flex;
+        gap: 16px;
+    }
+    .app-header-meta span {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+    .app-header-meta b {
+        color: #172536;
+    }
+
+    /* Research Governance Banner */
+    .governance-strip {
+        background-color: #FFFFFF;
+        border: 1px solid #DCE2EA;
+        border-left: 3px solid #3478C7;
+        border-radius: 3px;
+        padding: 6px 14px;
+        font-size: 0.77rem;
+        color: #667487;
         margin-bottom: 14px;
         display: flex;
         align-items: center;
         gap: 8px;
     }
+    .governance-strip b {
+        color: #142B4A;
+        font-weight: 700;
+    }
 
-    /* Card Wrapper */
-    .enterprise-card {
+    /* =========================================================================
+       TERMINAL NAVIGATION TABS
+       ========================================================================= */
+    .stTabs [data-baseweb="tab-list"] {
+        background-color: #FFFFFF !important;
+        border: 1px solid #DCE2EA !important;
+        border-radius: 4px !important;
+        padding: 2px !important;
+        gap: 2px !important;
+        box-shadow: none !important;
+        margin-bottom: 14px !important;
+    }
+    .stTabs [data-baseweb="tab"] {
+        height: 36px !important;
+        white-space: pre-wrap !important;
+        background-color: transparent !important;
+        border-radius: 3px !important;
+        padding: 6px 12px !important;
+        font-weight: 600 !important;
+        font-size: 0.80rem !important;
+        color: #667487 !important;
+        border: none !important;
+        transition: all 0.1s ease !important;
+    }
+    .stTabs [data-baseweb="tab"]:hover {
+        background-color: #F3F5F8 !important;
+        color: #172536 !important;
+    }
+    .stTabs [aria-selected="true"] {
+        background-color: #142B4A !important;
+        color: #FFFFFF !important;
+        border-radius: 3px !important;
+    }
+    .stTabs [data-baseweb="tab-highlight"], .stTabs [data-baseweb="tab-border"] {
+        display: none !important;
+    }
+
+    /* =========================================================================
+       BLOOMBERG TERMINAL KPI TELEMETRY BAR
+       ========================================================================= */
+    [data-testid="stMetric"] {
+        background-color: #FFFFFF !important;
+        border: 1px solid #DCE2EA !important;
+        border-radius: 4px !important;
+        padding: 10px 14px !important;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+    }
+    [data-testid="stMetricLabel"] p {
+        font-size: 0.68rem !important;
+        font-weight: 700 !important;
+        color: #667487 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.06em !important;
+        margin-bottom: 2px !important;
+    }
+    [data-testid="stMetricValue"] div {
+        font-size: 1.55rem !important;
+        font-weight: 800 !important;
+        color: #142B4A !important;
+        font-family: 'JetBrains Mono', 'Inter', monospace !important;
+        letter-spacing: -0.02em !important;
+        line-height: 1.1 !important;
+    }
+    [data-testid="stMetricDelta"] {
+        font-size: 0.72rem !important;
+        font-weight: 600 !important;
+    }
+
+    /* =========================================================================
+       ANALYTICAL SURFACES & CARDS
+       ========================================================================= */
+    .terminal-card {
         background-color: #FFFFFF;
-        border: 1px solid #E2E8F0;
-        border-radius: 10px;
-        padding: 20px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
-        margin-bottom: 18px;
+        border: 1px solid #DCE2EA;
+        border-radius: 4px;
+        padding: 14px 18px;
+        margin-bottom: 12px;
+    }
+    .terminal-section-title {
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: #142B4A;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin-top: 4px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .terminal-badge {
+        font-size: 0.68rem;
+        font-weight: 700;
+        padding: 2px 6px;
+        border-radius: 3px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+    }
+    .terminal-badge-p1 {
+        background-color: #FCE8E8;
+        color: #C45151;
+        border: 1px solid #F5C2C2;
+    }
+    .terminal-badge-p2 {
+        background-color: #FDF3E3;
+        color: #C58B32;
+        border: 1px solid #F5DEB3;
+    }
+    .terminal-badge-p3 {
+        background-color: #DCE8F5;
+        color: #142B4A;
+        border: 1px solid #BACFE6;
     }
 
     /* Expanders */
     [data-testid="stExpander"] {
         background-color: #FFFFFF !important;
-        border: 1px solid #E2E8F0 !important;
-        border-radius: 8px !important;
-        margin-bottom: 8px !important;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+        border: 1px solid #DCE2EA !important;
+        border-radius: 4px !important;
+        margin-bottom: 6px !important;
     }
     [data-testid="stExpander"] summary {
         font-weight: 600 !important;
         color: #142B4A !important;
-        font-size: 0.92rem !important;
-        padding: 12px 16px !important;
+        font-size: 0.86rem !important;
+        padding: 10px 14px !important;
     }
 
     /* Buttons */
     div.stButton > button:first-child {
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 0.88rem;
-        padding: 8px 18px;
-        transition: all 0.2s ease;
-        border: 1px solid #CBD5E1;
-        background-color: #FFFFFF;
-        color: #1E293B;
+        border-radius: 3px !important;
+        font-weight: 600 !important;
+        font-size: 0.82rem !important;
+        padding: 6px 14px !important;
+        border: 1px solid #DCE2EA !important;
+        background-color: #FFFFFF !important;
+        color: #172536 !important;
     }
     div.stButton > button:first-child:hover {
-        border-color: #2563EB;
-        color: #2563EB;
-        background-color: #F8FAFC;
+        border-color: #3478C7 !important;
+        color: #3478C7 !important;
+        background-color: #F3F5F8 !important;
     }
     div.stButton > button[kind="primary"] {
-        background-color: #2563EB !important;
+        background-color: #3478C7 !important;
         color: #FFFFFF !important;
         border: none !important;
-        box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2) !important;
     }
     div.stButton > button[kind="primary"]:hover {
-        background-color: #1D4ED8 !important;
-        box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3) !important;
+        background-color: #203B5C !important;
     }
 
     /* Download Buttons */
     div.stDownloadButton > button {
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 0.86rem;
-        padding: 8px 16px;
-        border: 1px solid #CBD5E1;
-        background-color: #FFFFFF;
-        color: #1E293B;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
-        transition: all 0.2s ease;
-        width: 100%;
+        border-radius: 3px !important;
+        font-weight: 600 !important;
+        font-size: 0.80rem !important;
+        padding: 6px 12px !important;
+        border: 1px solid #DCE2EA !important;
+        background-color: #FFFFFF !important;
+        color: #172536 !important;
+        width: 100% !important;
     }
     div.stDownloadButton > button:hover {
-        border-color: #2563EB;
-        color: #2563EB;
-        background-color: #EFF6FF;
+        border-color: #3478C7 !important;
+        color: #3478C7 !important;
+        background-color: #F3F5F8 !important;
     }
 
     /* Form Container */
     [data-testid="stForm"] {
-        background-color: #FFFFFF;
-        border: 1px solid #E2E8F0;
-        border-radius: 12px;
-        padding: 24px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
-    }
-
-    /* Multiselect Tags */
-    [data-baseweb="tag"] {
-        background-color: #EFF6FF !important;
-        border: 1px solid #DBEAFE !important;
-        border-radius: 6px !important;
-        color: #1D4ED8 !important;
-        font-weight: 500 !important;
+        background-color: #FFFFFF !important;
+        border: 1px solid #DCE2EA !important;
+        border-radius: 4px !important;
+        padding: 18px !important;
     }
 
     /* Dataframe Container */
     [data-testid="stDataFrame"] {
-        border: 1px solid #E2E8F0;
-        border-radius: 8px;
-        overflow: hidden;
-        background-color: #FFFFFF;
-    }
-
-    /* Recommendation Priority Badges */
-    .rec-badge-p1 {
-        background-color: #FEF2F2;
-        color: #991B1B;
-        border: 1px solid #FEE2E2;
-        padding: 3px 8px;
-        border-radius: 6px;
-        font-size: 0.74rem;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-    }
-    .rec-badge-p2 {
-        background-color: #FFFBEB;
-        color: #92400E;
-        border: 1px solid #FEF3C7;
-        padding: 3px 8px;
-        border-radius: 6px;
-        font-size: 0.74rem;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-    }
-    .rec-badge-p3 {
-        background-color: #EFF6FF;
-        color: #1E40AF;
-        border: 1px solid #DBEAFE;
-        padding: 3px 8px;
-        border-radius: 6px;
-        font-size: 0.74rem;
-        font-weight: 700;
-        letter-spacing: 0.04em;
+        border: 1px solid #DCE2EA !important;
+        border-radius: 4px !important;
+        overflow: hidden !important;
+        background-color: #FFFFFF !important;
     }
 </style>
 """, unsafe_allow_html=True)
 
+# -----------------------------------------------------------------------------
+# STANDARDIZED DRUG CLASS COLOR PALETTE (IQVIA COMMERCIAL STANDARD)
+# -----------------------------------------------------------------------------
+DRUG_CLASS_COLOR_MAP = {
+    "GLP-1 RA": "#142B4A",
+    "GLP-1 / GIP Dual Agonist": "#203B5C",
+    "SGLT2 Inhibitor": "#3478C7",
+    "DPP-4 Inhibitor": "#168C83",
+    "Biguanide (Metformin)": "#667487",
+    "Sulfonylurea": "#C58B32",
+    "Basal Insulin": "#C45151",
+    "Other T2D": "#8C9BAE"
+}
 
-# Reusable Enterprise Chart Theming Helper
-def apply_enterprise_chart_theme(fig, height=360, show_grid=True):
+def apply_terminal_chart_theme(fig, height=340, show_grid=True):
     """
-    Applies consistent enterprise healthcare SaaS typography, margins,
-    clean transparent canvas, and muted gridlines across Plotly figures.
+    Applies the Bloomberg Terminal × IQVIA chart theme:
+    - Font: Inter (numbers formatted cleanly)
+    - Canvas: Transparent with subtle #E8EDF3 horizontal gridlines
+    - Margins: Compact padding maximizing data-ink ratio
+    - Tooltips: Dark terminal container (#101C2D) with crisp border
     """
     fig.update_layout(
         font=dict(
             family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
-            size=12,
-            color="#475569"
+            size=11,
+            color="#667487"
         ),
         paper_bgcolor="rgba(0,0,0,0)",
         plot_bgcolor="rgba(0,0,0,0)",
         height=height,
-        margin=dict(l=20, r=20, t=35, b=25),
+        margin=dict(l=15, r=15, t=30, b=25),
         title_font=dict(
             family="Inter, sans-serif",
-            size=13,
+            size=12,
             color="#142B4A"
         ),
         legend=dict(
-            font=dict(size=11, color="#475569"),
+            font=dict(size=10, color="#667487"),
             orientation="h",
             yanchor="bottom",
             y=1.02,
@@ -472,32 +473,30 @@ def apply_enterprise_chart_theme(fig, height=360, show_grid=True):
             x=1
         ),
         hoverlabel=dict(
-            bgcolor="#142B4A",
-            font_size=12,
+            bgcolor="#101C2D",
+            font_size=11,
             font_color="#FFFFFF",
-            font_family="Inter, sans-serif",
-            bordercolor="#2563EB"
+            font_family="Inter, monospace",
+            bordercolor="#3478C7"
         )
     )
     if show_grid:
         fig.update_xaxes(
-            showgrid=True,
-            gridcolor="#F1F5F9",
+            showgrid=False,
             zeroline=True,
-            zerolinecolor="#E2E8F0",
-            tickfont=dict(size=11, color="#64748B"),
-            title_font=dict(size=11, color="#475569")
+            zerolinecolor="#DCE2EA",
+            tickfont=dict(size=10, color="#667487"),
+            title_font=dict(size=11, color="#172536")
         )
         fig.update_yaxes(
             showgrid=True,
-            gridcolor="#F1F5F9",
+            gridcolor="#E8EDF3",
             zeroline=True,
-            zerolinecolor="#E2E8F0",
-            tickfont=dict(size=11, color="#64748B"),
-            title_font=dict(size=11, color="#475569")
+            zerolinecolor="#DCE2EA",
+            tickfont=dict(size=10, color="#667487"),
+            title_font=dict(size=11, color="#172536")
         )
     return fig
-
 
 # Cache Analytics Runs
 @st.cache_data
@@ -513,14 +512,14 @@ def load_data():
 cms_df, survey_df, survey_stats, cms_stats, gap_stats, insights = load_data()
 
 # -----------------------------------------------------------------------------
-# SIDEBAR DESIGN
+# SIDEBAR: DARK TERMINAL FILTER PANEL
 # -----------------------------------------------------------------------------
 st.sidebar.markdown("""
 <div class="sidebar-brand-box">
     <div class="sidebar-brand-icon">💊</div>
     <div>
-        <div class="sidebar-brand-title">PharmaPulse</div>
-        <div class="sidebar-brand-subtitle">Commercial Intelligence Suite</div>
+        <div class="sidebar-brand-title">PHARMAPULSE</div>
+        <div class="sidebar-brand-caption">T2D Commercial Intelligence Terminal</div>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -555,13 +554,15 @@ st.sidebar.markdown("""
         <span class="sidebar-status-dot"></span>
         <span>Simulation Engine Active</span>
     </div>
-    <div style="color: #64748B; line-height: 1.4;">
-        <b>Data Stack:</b> CMS Medicare Part D (2022 PUF) + Verified Synthetic HCP Panel (N=350).
+    <div style="color: #8C9BAE; font-size: 0.72rem; line-height: 1.4;">
+        <b>CMS Part D:</b> 2022 PUF (4,665 Records)<br>
+        <b>HCP Survey:</b> N=350 Prescribers<br>
+        <b>Model:</b> Star-Schema v1.0
     </div>
 </div>
 """, unsafe_allow_html=True)
 
-# Filter Data for Dynamic Visuals
+# Filter Data for Dynamic Visuals (Unchanged Filtering Logic)
 filtered_cms = cms_df[
     (cms_df["PRSCRBR_TYPE"].isin(selected_specialty)) &
     (cms_df["DRUG_CLASS"].isin(selected_classes)) &
@@ -574,40 +575,28 @@ filtered_survey = survey_df[survey_df["Q1_SPECIALTY"].isin(selected_specialty)]
 # APPLICATION HEADER
 # -----------------------------------------------------------------------------
 st.markdown("""
-<div class="app-header-container">
-    <div class="app-header-left">
-        <div class="app-logo-badge">💊</div>
-        <div>
-            <div class="app-title-text">
-                PharmaPulse 
-                <span class="app-title-pill">COMMERCIAL SUITE</span>
-            </div>
-            <div class="app-subtitle-text">
-                Type 2 Diabetes (T2D) Treatment Landscape, HCP Market Research & Medicare Part D Prescribing Intelligence
-            </div>
-        </div>
+<div class="app-header-strip">
+    <div class="app-header-title-group">
+        <span class="app-header-title">PHARMAPULSE</span>
+        <span class="app-header-tag">T2D COMMERCIAL TERMINAL</span>
     </div>
-    <div class="app-header-badges">
-        <span class="header-chip">CMS Part D 2022</span>
-        <span class="header-chip">HCP Survey N=350</span>
-        <span class="header-chip header-chip-live">● Operational</span>
+    <div class="app-header-meta">
+        <span>Dataset: <b>CMS Part D 2022 PUF</b></span>
+        <span>Cohort: <b>HCP Survey N=350</b></span>
+        <span>Indication: <b>Adult Type 2 Diabetes</b></span>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
 st.markdown("""
-<div class="disclaimer-banner">
-    <div class="disclaimer-icon">ℹ️</div>
-    <div>
-        <strong>INDEPENDENT RESEARCH SIMULATION:</strong> This platform is developed as an independent commercial research simulation. 
-        It is not sponsored by or affiliated with an actual pharmaceutical enterprise. CMS records reflect Medicare Part D public data; 
-        survey findings represent reproducible synthetic HCP market research.
-    </div>
+<div class="governance-strip">
+    <span>ℹ️</span>
+    <span><b>RESEARCH SIMULATION NOTICE:</b> Developed as an independent commercial intelligence research simulation. Not affiliated with a commercial pharmaceutical company. CMS records reflect public Part D data; survey results represent verified synthetic HCP market research.</span>
 </div>
 """, unsafe_allow_html=True)
 
 # -----------------------------------------------------------------------------
-# MAIN NAVIGATION TABS
+# MAIN NAVIGATION TABS (EXACT 8 TABS PRESERVED)
 # -----------------------------------------------------------------------------
 tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs([
     "🏢 Executive Overview",
@@ -624,9 +613,9 @@ tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs([
 # TAB 1: EXECUTIVE OVERVIEW
 # =============================================================================
 with tab1:
-    st.markdown('<div class="section-title">📊 Executive Market Performance Indicators</div>', unsafe_allow_html=True)
+    st.markdown('<div class="terminal-section-title">MARKET TELEMETRY & KEY PERFORMANCE INDICATORS</div>', unsafe_allow_html=True)
     
-    # KPI Metrics Row
+    # Bloomberg-style KPI Ribbon (Exact Existing Calculations)
     c1, c2, c3, c4, c5 = st.columns(5)
     with c1:
         st.metric(
@@ -658,16 +647,16 @@ with tab1:
         st.metric(
             label="Top Adoption Barrier",
             value="Prior Auth",
-            delta=f"{top_b['top_box_pct']}% High Severity",
+            delta=f"{top_b['top_box_pct']}% Severity",
             delta_color="inverse"
         )
 
-    st.markdown("<div style='height: 16px;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
 
     col_left, col_right = st.columns([3, 2])
 
     with col_left:
-        st.markdown('<div class="section-title">📈 Drug Class Market Share: Claims Volume vs Gross Expenditure</div>', unsafe_allow_html=True)
+        st.markdown('<div class="terminal-section-title">DRUG CLASS SHARE: CLAIMS VOLUME VS GROSS EXPENDITURE</div>', unsafe_allow_html=True)
         class_agg = filtered_cms.groupby("DRUG_CLASS").agg(
             claims=("TOT_CLMS", "sum"),
             cost=("TOT_DRUG_CST", "sum")
@@ -684,28 +673,28 @@ with tab1:
             x=class_agg["DRUG_CLASS"],
             y=class_agg["cost"] / class_agg["cost"].sum() * 100,
             name="Gross Spend Share %",
-            marker_color="#2563EB"
+            marker_color="#3478C7"
         ))
         fig_inv.update_layout(
             barmode="group",
-            yaxis_title="% of Market",
+            yaxis_title="% of Total",
         )
-        fig_inv = apply_enterprise_chart_theme(fig_inv, height=370)
+        fig_inv = apply_terminal_chart_theme(fig_inv, height=350)
         st.plotly_chart(fig_inv, use_container_width=True)
 
     with col_right:
-        st.markdown('<div class="section-title">💡 Strategic Executive Insights</div>', unsafe_allow_html=True)
+        st.markdown('<div class="terminal-section-title">STRATEGIC EXECUTIVE INSIGHTS</div>', unsafe_allow_html=True)
         for i, ins in enumerate(insights["insights_catalog"][:3]):
             with st.expander(f"**{i+1}. {ins['title']}**", expanded=(i==0)):
                 st.write(ins["statement"])
-                st.markdown(f"<span style='font-size:0.78rem; color:#64748B;'><b>Metric:</b> <code>{ins['traceable_metrics']}</code></span>", unsafe_allow_html=True)
-                st.markdown(f"<div style='margin-top:8px; padding:8px 12px; background:#EFF6FF; border-radius:6px; border-left:3px solid #2563EB; font-size:0.84rem; color:#1E40AF;'><b>Strategic Action:</b> {ins['strategic_recommendation']}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div style='font-size:0.75rem; color:#667487; margin-top:4px;'><b>METRIC:</b> <code>{ins['traceable_metrics']}</code></div>", unsafe_allow_html=True)
+                st.markdown(f"<div style='margin-top:6px; padding:6px 10px; background:#F3F5F8; border-left:3px solid #3478C7; font-size:0.80rem; color:#142B4A;'><b>STRATEGIC ACTION:</b> {ins['strategic_recommendation']}</div>", unsafe_allow_html=True)
 
 # =============================================================================
 # TAB 2: SURVEY ANALYTICS
 # =============================================================================
 with tab2:
-    st.markdown('<div class="section-title">📝 Healthcare Professional Survey Insights (N=350)</div>', unsafe_allow_html=True)
+    st.markdown('<div class="terminal-section-title">HCP MARKET RESEARCH SURVEY INSIGHTS (N=350)</div>', unsafe_allow_html=True)
     
     s_col1, s_col2 = st.columns(2)
 
@@ -720,12 +709,12 @@ with tab2:
             x="Therapy",
             y="Percentage",
             color="Therapy",
-            color_discrete_sequence=["#142B4A", "#2563EB", "#0F9D92", "#F59E0B", "#64748B"],
+            color_discrete_sequence=["#142B4A", "#3478C7", "#168C83", "#C58B32", "#C45151"],
             text="Percentage"
         )
         fig_ascvd.update_traces(texttemplate='%{text:.1f}%', textposition='outside')
         fig_ascvd.update_layout(showlegend=False, yaxis_range=[0, max(ascvd_df['Percentage'])*1.22])
-        fig_ascvd = apply_enterprise_chart_theme(fig_ascvd, height=330)
+        fig_ascvd = apply_terminal_chart_theme(fig_ascvd, height=310)
         st.plotly_chart(fig_ascvd, use_container_width=True)
 
     with s_col2:
@@ -739,15 +728,15 @@ with tab2:
             x="Therapy",
             y="Percentage",
             color="Therapy",
-            color_discrete_sequence=["#0F9D92", "#142B4A", "#2563EB", "#F59E0B", "#64748B"],
+            color_discrete_sequence=["#3478C7", "#142B4A", "#168C83", "#C58B32", "#C45151"],
             text="Percentage"
         )
         fig_ckd.update_traces(texttemplate='%{text:.1f}%', textposition='outside')
         fig_ckd.update_layout(showlegend=False, yaxis_range=[0, max(ckd_df['Percentage'])*1.22])
-        fig_ckd = apply_enterprise_chart_theme(fig_ckd, height=330)
+        fig_ckd = apply_terminal_chart_theme(fig_ckd, height=310)
         st.plotly_chart(fig_ckd, use_container_width=True)
 
-    st.markdown("<div style='height: 14px;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height: 8px;'></div>", unsafe_allow_html=True)
     st.markdown("##### Adoption Barriers: Ranked Severity & Top-Box Agreement (Likert 1-5)")
 
     barrier_table = pd.DataFrame([
@@ -769,22 +758,21 @@ with tab2:
         y="label",
         orientation="h",
         color="mean",
-        color_continuous_scale=["#2563EB", "#F59E0B", "#EF4444"],
+        color_continuous_scale=["#3478C7", "#C58B32", "#C45151"],
         labels={"mean": "Mean Severity Score (1-5)", "label": "Adoption Barrier"},
     )
     fig_barriers.update_layout(yaxis=dict(autorange="reversed"), coloraxis_showscale=False)
-    fig_barriers = apply_enterprise_chart_theme(fig_barriers, height=300)
+    fig_barriers = apply_terminal_chart_theme(fig_barriers, height=280)
     st.plotly_chart(fig_barriers, use_container_width=True)
 
 # =============================================================================
 # TAB 3: LIVE SURVEY PROTOTYPE
 # =============================================================================
 with tab3:
-    st.markdown('<div class="section-title">📋 Interactive Healthcare Professional (HCP) Survey Prototype</div>', unsafe_allow_html=True)
+    st.markdown('<div class="terminal-section-title">HCP CLINICAL RESEARCH QUESTIONNAIRE INSTRUMENT</div>', unsafe_allow_html=True)
     st.markdown(
-        "<p style='color: #64748B; font-size: 0.9rem; margin-top:-8px; margin-bottom:18px;'>"
-        "Experience the digital survey instrument used to collect prescriber insights. "
-        "Responses submitted below demonstrate real-time input capture."
+        "<p style='color: #667487; font-size: 0.82rem; margin-top:-6px; margin-bottom:14px;'>"
+        "Interactive digital questionnaire instrument. Responses submitted demonstrate real-time data capture."
         "</p>",
         unsafe_allow_html=True
     )
@@ -803,7 +791,7 @@ with tab3:
             q8 = st.selectbox("7. Second-Line Choice in CKD / Heart Failure", QUESTIONS_DEFINITION[7]["options"])
             q16 = st.selectbox("8. Single Most Important Decision Factor", QUESTIONS_DEFINITION[15]["options"])
 
-        st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='height: 8px;'></div>", unsafe_allow_html=True)
         st.markdown("##### Rate Perceived Adoption Barriers (1: Not a Barrier → 5: Critical Barrier)")
         c_b1, c_b2, c_b3 = st.columns(3)
         with c_b1:
@@ -817,13 +805,13 @@ with tab3:
 
         submitted = st.form_submit_button("Submit Survey Response", type="primary")
         if submitted:
-            st.success("✅ Response recorded successfully! Survey instrument is fully operational.")
+            st.success("Response recorded successfully! Questionnaire instrument is fully operational.")
 
-    st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
-    st.markdown('<div class="section-title">📥 Qualtrics Transfer & Integration Center</div>', unsafe_allow_html=True)
+    st.markdown("<div style='height: 16px;'></div>", unsafe_allow_html=True)
+    st.markdown('<div class="terminal-section-title">QUALTRICS SURVEY DEPLOYMENT & TRANSFER CENTER</div>', unsafe_allow_html=True)
     st.markdown(
-        "<p style='color:#64748B; font-size:0.88rem; margin-top:-8px; margin-bottom:14px;'>"
-        "Transfer this questionnaire directly into Qualtrics CoreXM via <b>Tools → Import/Export → Import Survey → From a text file</b>."
+        "<p style='color:#667487; font-size:0.80rem; margin-top:-6px; margin-bottom:10px;'>"
+        "Direct export formats for Qualtrics CoreXM via <b>Tools → Import/Export → Import Survey</b>."
         "</p>",
         unsafe_allow_html=True
     )
@@ -854,7 +842,7 @@ with tab3:
 # TAB 4: PART D PRESCRIBING LANDSCAPE
 # =============================================================================
 with tab4:
-    st.markdown('<div class="section-title">📊 CMS Medicare Part D Prescribing Landscape</div>', unsafe_allow_html=True)
+    st.markdown('<div class="terminal-section-title">CMS MEDICARE PART D PRESCRIBING LANDSCAPE (2022 PUF)</div>', unsafe_allow_html=True)
     
     p_col1, p_col2 = st.columns(2)
 
@@ -871,11 +859,11 @@ with tab4:
             y="DRUG_NAME",
             orientation="h",
             color="DRUG_CLASS",
-            color_discrete_sequence=["#142B4A", "#2563EB", "#0F9D92", "#64748B", "#F59E0B"],
+            color_discrete_map=DRUG_CLASS_COLOR_MAP,
             labels={"claims": "Total Claims", "DRUG_NAME": "Product Brand Name"},
         )
         fig_drugs.update_layout(yaxis=dict(autorange="reversed"))
-        fig_drugs = apply_enterprise_chart_theme(fig_drugs, height=360)
+        fig_drugs = apply_terminal_chart_theme(fig_drugs, height=340)
         st.plotly_chart(fig_drugs, use_container_width=True)
 
     with p_col2:
@@ -891,12 +879,12 @@ with tab4:
             y="claims",
             color="cost",
             labels={"PRSCRBR_STATE_ABRVTN": "State", "claims": "Total Claims", "cost": "Total Spend ($)"},
-            color_continuous_scale="Blues",
+            color_continuous_scale=["#DCE8F5", "#3478C7", "#142B4A"],
         )
-        fig_state = apply_enterprise_chart_theme(fig_state, height=360)
+        fig_state = apply_terminal_chart_theme(fig_state, height=340)
         st.plotly_chart(fig_state, use_container_width=True)
 
-    st.markdown("<div style='height: 14px;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
     st.markdown("##### Prescriber Specialty Prescribing Intensity (% Share of Specialty Volume)")
     spec_mat_df = pd.DataFrame(cms_stats["specialty_class_matrix"]).T
     st.dataframe(spec_mat_df, use_container_width=True)
@@ -905,10 +893,10 @@ with tab4:
 # TAB 5: STATISTICAL RIGOR & HYPOTHESIS TESTING
 # =============================================================================
 with tab5:
-    st.markdown('<div class="section-title">🔬 Statistical Validation & Inferential Testing</div>', unsafe_allow_html=True)
+    st.markdown('<div class="terminal-section-title">STATISTICAL VALIDATION & INFERENTIAL TESTING</div>', unsafe_allow_html=True)
     st.markdown(
-        "<p style='color:#64748B; font-size:0.88rem; margin-top:-8px; margin-bottom:16px;'>"
-        "Distinguishing descriptive sample observations from statistically verified relationships using non-parametric & independence tests."
+        "<p style='color:#667487; font-size:0.80rem; margin-top:-6px; margin-bottom:12px;'>"
+        "Inferential statistical tests distinguishing sample variation from verified market relationships."
         "</p>",
         unsafe_allow_html=True
     )
@@ -920,20 +908,20 @@ with tab5:
         chi_ascvd = survey_stats["hypothesis_tests"]["chi2_specialty_vs_ascvd_preference"]
         st.markdown(
             f"""
-            <div class="enterprise-card" style="margin-bottom:12px;">
-                <div style="font-size:0.84rem; font-weight:700; color:#142B4A; margin-bottom:8px;">
+            <div class="terminal-card">
+                <div style="font-size:0.80rem; font-weight:700; color:#142B4A; margin-bottom:6px;">
                     HYPOTHESIS: Physician Specialty vs Second-Line ASCVD Preference
                 </div>
-                <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:8px; font-size:0.82rem; margin-bottom:10px;">
-                    <div>• <b>Chi-Square (χ²):</b> <code>{chi_ascvd['chi2_statistic']}</code></div>
-                    <div>• <b>Degrees of Freedom:</b> <code>{chi_ascvd['degrees_of_freedom']}</code></div>
-                    <div>• <b>p-value:</b> <code>{chi_ascvd['p_value']:.4e}</code></div>
-                    <div>• <b>Cramér's V:</b> <code>{chi_ascvd['cramers_v']}</code> (Strong Effect)</div>
-                    <div>• <b>Cochran Met:</b> <code>{chi_ascvd['cochran_assumptions_met']}</code></div>
-                    <div>• <b>Cells &lt; 5:</b> <code>{chi_ascvd['pct_cells_expected_under_5']}%</code></div>
+                <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:6px; font-size:0.78rem; font-family:'JetBrains Mono', monospace; margin-bottom:8px;">
+                    <div>• χ²: <b>{chi_ascvd['chi2_statistic']}</b></div>
+                    <div>• df: <b>{chi_ascvd['degrees_of_freedom']}</b></div>
+                    <div>• p-value: <b>{chi_ascvd['p_value']:.4e}</b></div>
+                    <div>• Cramér's V: <b>{chi_ascvd['cramers_v']}</b></div>
+                    <div>• Cochran Met: <b>{chi_ascvd['cochran_assumptions_met']}</b></div>
+                    <div>• Cells &lt; 5: <b>{chi_ascvd['pct_cells_expected_under_5']}%</b></div>
                 </div>
-                <div style="padding:8px 12px; background:#ECFDF5; border-radius:6px; border-left:3px solid #10B981; font-size:0.82rem; color:#065F46;">
-                    ✅ <b>Statistically Significant:</b> Prescribing preference is strongly dependent on physician specialty (p &lt; 0.05).
+                <div style="padding:6px 10px; background:#EBF7F2; border-left:3px solid #16845B; font-size:0.78rem; color:#16845B; font-weight:600;">
+                    ● Statistically Significant: Prescribing preference is strongly dependent on specialty (p &lt; 0.05).
                 </div>
             </div>
             """,
@@ -946,24 +934,24 @@ with tab5:
         kw_needle = survey_stats["hypothesis_tests"]["kruskal_specialty_vs_needle_anxiety"]
         st.markdown(
             f"""
-            <div class="enterprise-card" style="margin-bottom:12px;">
-                <div style="font-size:0.84rem; font-weight:700; color:#142B4A; margin-bottom:8px;">
-                    BARRIER DIVERGENCE ACROSS SPECIALTIES
+            <div class="terminal-card">
+                <div style="font-size:0.80rem; font-weight:700; color:#142B4A; margin-bottom:6px;">
+                    SPECIALTY BARRIER DIVERGENCE TESTS
                 </div>
-                <div style="font-size:0.82rem; margin-bottom:8px;">
+                <div style="font-size:0.78rem; margin-bottom:6px;">
                     <b>Prior Auth Burden:</b> H={kw_pa['h_statistic']}, p={kw_pa['p_value']:.4f}
-                    <div style="color:#64748B; font-size:0.78rem;">{kw_pa['interpretation']}</div>
+                    <div style="color:#667487; font-size:0.74rem;">{kw_pa['interpretation']}</div>
                 </div>
-                <div style="font-size:0.82rem; margin-top:8px;">
+                <div style="font-size:0.78rem; margin-top:6px;">
                     <b>Needle Anxiety Barrier:</b> H={kw_needle['h_statistic']}, p={kw_needle['p_value']:.4f}
-                    <div style="color:#64748B; font-size:0.78rem;">{kw_needle['interpretation']}</div>
+                    <div style="color:#667487; font-size:0.74rem;">{kw_needle['interpretation']}</div>
                 </div>
             </div>
             """,
             unsafe_allow_html=True
         )
 
-    st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height: 8px;'></div>", unsafe_allow_html=True)
     st.markdown("##### Barrier Correlation Matrix (Spearman Rank)")
     corr_df = pd.DataFrame(survey_stats["barrier_correlation_matrix"])
     short_corr_names = ["Prior Auth", "Out-of-Pocket", "Side Effects", "Supply Shortage", "Needle Anxiety"]
@@ -972,20 +960,20 @@ with tab5:
     fig_corr = px.imshow(
         corr_df,
         text_auto=True,
-        color_continuous_scale="Blues",
+        color_continuous_scale=["#DCE8F5", "#3478C7", "#142B4A"],
         aspect="auto",
     )
-    fig_corr = apply_enterprise_chart_theme(fig_corr, height=330, show_grid=False)
+    fig_corr = apply_terminal_chart_theme(fig_corr, height=300, show_grid=False)
     st.plotly_chart(fig_corr, use_container_width=True)
 
 # =============================================================================
 # TAB 6: STATED VS OBSERVED GAP & INSIGHTS
 # =============================================================================
 with tab6:
-    st.markdown('<div class="section-title">💡 The Stated vs. Observed Prescribing Gap</div>', unsafe_allow_html=True)
+    st.markdown('<div class="terminal-section-title">THE STATED VS. OBSERVED PRESCRIBING GAP (THE ACCESS WEDGE)</div>', unsafe_allow_html=True)
     st.markdown(
-        "<p style='color:#64748B; font-size:0.88rem; margin-top:-8px; margin-bottom:16px;'>"
-        "Quantifying the disparity between clinical guideline preference and empirical Medicare dispensing reality."
+        "<p style='color:#667487; font-size:0.80rem; margin-top:-6px; margin-bottom:12px;'>"
+        "Disparity analysis between stated physician guideline intent and actual Part D retail dispensing."
         "</p>",
         unsafe_allow_html=True
     )
@@ -1003,13 +991,13 @@ with tab6:
         x=gap_df["drug_class"],
         y=gap_df["observed_part_d_claims_share_pct"],
         name="Observed Part D Claims Share %",
-        marker_color="#F59E0B"
+        marker_color="#C58B32"
     ))
     fig_gap.update_layout(
         barmode="group",
         yaxis_title="% Share",
     )
-    fig_gap = apply_enterprise_chart_theme(fig_gap, height=360)
+    fig_gap = apply_terminal_chart_theme(fig_gap, height=330)
     st.plotly_chart(fig_gap, use_container_width=True)
 
     st.dataframe(gap_df[[
@@ -1017,20 +1005,20 @@ with tab6:
         "adoption_gap_pct_pts", "realization_ratio", "market_status", "underlying_commercial_driver"
     ]], use_container_width=True, hide_index=True)
 
-    st.markdown("<div style='height: 18px;'></div>", unsafe_allow_html=True)
-    st.markdown('<div class="section-title">🎯 Actionable Commercial Recommendations Portfolio</div>', unsafe_allow_html=True)
+    st.markdown("<div style='height: 14px;'></div>", unsafe_allow_html=True)
+    st.markdown('<div class="terminal-section-title">ACTIONABLE COMMERCIAL RECOMMENDATIONS PORTFOLIO</div>', unsafe_allow_html=True)
     
     for rec in insights["recommendations_portfolio"]:
-        badge_class = "rec-badge-p1" if "P1" in rec['priority'] else ("rec-badge-p2" if "P2" in rec['priority'] else "rec-badge-p3")
+        badge_class = "terminal-badge-p1" if "P1" in rec['priority'] else ("terminal-badge-p2" if "P2" in rec['priority'] else "terminal-badge-p3")
         st.markdown(
             f"""
-            <div class="enterprise-card" style="padding:14px 18px; margin-bottom:10px;">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-                    <span style="font-weight:700; color:#142B4A; font-size:0.95rem;">{rec['initiative']}</span>
-                    <span class="{badge_class}">{rec['priority']}</span>
+            <div class="terminal-card" style="padding:10px 14px; margin-bottom:8px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                    <span style="font-weight:700; color:#142B4A; font-size:0.88rem;">{rec['initiative']}</span>
+                    <span class="terminal-badge {badge_class}">{rec['priority']}</span>
                 </div>
-                <div style="font-size:0.83rem; color:#475569; margin-bottom:4px;"><b>Target Stakeholder:</b> {rec['target']}</div>
-                <div style="font-size:0.83rem; color:#1E40AF; background:#EFF6FF; padding:6px 10px; border-radius:6px;"><b>Expected Impact:</b> {rec['expected_impact']}</div>
+                <div style="font-size:0.78rem; color:#667487; margin-bottom:3px;"><b>TARGET STAKEHOLDER:</b> {rec['target']}</div>
+                <div style="font-size:0.78rem; color:#142B4A; background:#F3F5F8; padding:5px 8px; border-radius:3px;"><b>EXPECTED COMMERCIAL IMPACT:</b> {rec['expected_impact']}</div>
             </div>
             """,
             unsafe_allow_html=True
@@ -1040,10 +1028,10 @@ with tab6:
 # TAB 7: REPORT GENERATOR & DATA EXPORTS
 # =============================================================================
 with tab7:
-    st.markdown('<div class="section-title">📑 Commercial Intelligence Export Center</div>', unsafe_allow_html=True)
+    st.markdown('<div class="terminal-section-title">COMMERCIAL INTELLIGENCE EXPORT WORKSPACE</div>', unsafe_allow_html=True)
     st.markdown(
-        "<p style='color:#64748B; font-size:0.88rem; margin-top:-8px; margin-bottom:16px;'>"
-        "Generate and download publication-ready executive decks and Power BI star-schema tables."
+        "<p style='color:#667487; font-size:0.80rem; margin-top:-6px; margin-bottom:12px;'>"
+        "Export publication-ready consulting presentations and Star-Schema dimension/fact tables."
         "</p>",
         unsafe_allow_html=True
     )
@@ -1053,24 +1041,24 @@ with tab7:
     with r_col1:
         st.markdown(
             """
-            <div class="enterprise-card">
-                <div style="font-size:1rem; font-weight:700; color:#142B4A; margin-bottom:6px;">📊 Automated PowerPoint Presentation</div>
-                <div style="font-size:0.82rem; color:#64748B; margin-bottom:14px;">
-                    10-slide executive deck populated with calculated metrics, charts, and strategic recommendations in 16:9 widescreen format.
+            <div class="terminal-card">
+                <div style="font-size:0.92rem; font-weight:700; color:#142B4A; margin-bottom:4px;">📊 AUTOMATED POWERPOINT REPORT</div>
+                <div style="font-size:0.78rem; color:#667487; margin-bottom:10px;">
+                    10-slide executive deck populated with calculated metrics, charts, and recommendations in 16:9 widescreen format.
                 </div>
             """,
             unsafe_allow_html=True
         )
         
         if st.button("Generate / Refresh PowerPoint Report", type="primary"):
-            with st.spinner("Building executive presentation deck..."):
+            with st.spinner("Compiling PowerPoint report deck..."):
                 deck_path = build_powerpoint_deck()
-                st.success("PowerPoint generated successfully!")
+                st.success("PowerPoint generated successfully.")
 
         if POWERPOINT_OUTPUT.exists():
             with open(POWERPOINT_OUTPUT, "rb") as f:
                 st.download_button(
-                    label="📥 Download Executive Presentation (.pptx)",
+                    label="📥 Download Executive Deck (.pptx)",
                     data=f.read(),
                     file_name="PharmaPulse_Executive_Report.pptx",
                     mime="application/vnd.openxmlformats-officedocument.presentationml.presentation"
@@ -1080,10 +1068,10 @@ with tab7:
     with r_col2:
         st.markdown(
             """
-            <div class="enterprise-card">
-                <div style="font-size:1rem; font-weight:700; color:#142B4A; margin-bottom:6px;">📁 Power BI Star-Schema Datasets</div>
-                <div style="font-size:0.82rem; color:#64748B; margin-bottom:14px;">
-                    Pre-formatted CSV dimension and fact tables ready for direct ingestion into Power BI Desktop:
+            <div class="terminal-card">
+                <div style="font-size:0.92rem; font-weight:700; color:#142B4A; margin-bottom:4px;">📁 POWER BI STAR-SCHEMA TABLES</div>
+                <div style="font-size:0.78rem; color:#667487; margin-bottom:10px;">
+                    Pre-formatted CSV dimension and fact tables for direct ingestion into Power BI Desktop:
                 </div>
             """,
             unsafe_allow_html=True
@@ -1097,7 +1085,7 @@ with tab7:
                     data=f.read(),
                     file_name=pfile.name,
                     mime="text/csv",
-                    key=f"dl_{pfile.name}"
+                    key=f"dl_v2_{pfile.name}"
                 )
         st.markdown("</div>", unsafe_allow_html=True)
 
@@ -1105,27 +1093,27 @@ with tab7:
 # TAB 8: METHODOLOGY & DOCUMENTATION
 # =============================================================================
 with tab8:
-    st.markdown('<div class="section-title">📖 Data Dictionary, Sources & Methodology Documentation</div>', unsafe_allow_html=True)
+    st.markdown('<div class="terminal-section-title">DATA DICTIONARY, SOURCES & METHODOLOGY DOCUMENTATION</div>', unsafe_allow_html=True)
 
     st.markdown("""
-    <div class="enterprise-card">
-        <h4 style="color:#142B4A; margin-top:0;">Data Sources & Scope</h4>
-        <p style="font-size:0.88rem; color:#475569; line-height:1.6;">
+    <div class="terminal-card">
+        <div style="font-size:0.86rem; font-weight:700; color:#142B4A; margin-bottom:6px;">Data Sources & Scope</div>
+        <p style="font-size:0.80rem; color:#667487; line-height:1.5;">
         <b>1. Public CMS Medicare Part D Prescriber Data (2022 PUF)</b><br>
         • <b>Source:</b> Centers for Medicare & Medicaid Services (CMS).<br>
         • <b>Coverage:</b> Prescribers submitting Medicare Part D claims for adult beneficiaries.<br>
-        • <b>Standardized Drug Catalog:</b> GLP-1 RAs (Semaglutide, Dulaglutide, Tirzepatide, Liraglutide), SGLT2i (Empagliflozin, Dapagliflozin, Canagliflozin), DPP-4i (Sitagliptin, Linagliptin), Biguanide (Metformin), Sulfonylureas (Glimepiride, Glipizide), Basal Insulins (Glargine, Degludec).<br>
-        • <b>Limitation:</b> Medicare Part D covers predominantly individuals aged 65+ and disabled adults; commercial employer-sponsored prescribing trends may differ.
+        • <b>Standardized Catalog:</b> GLP-1 RAs, SGLT2i, DPP-4i, Biguanide, Sulfonylureas, Basal Insulins.<br>
+        • <b>Limitation:</b> Reflects Medicare population (predominantly 65+ and disabled); commercial employer-sponsored plans may exhibit different tiering.
         </p>
-        <hr style="border:none; border-top:1px solid #F1F5F9; margin:14px 0;">
-        <p style="font-size:0.88rem; color:#475569; line-height:1.6;">
+        <hr style="border:none; border-top:1px solid #DCE2EA; margin:10px 0;">
+        <p style="font-size:0.80rem; color:#667487; line-height:1.5;">
         <b>2. Synthetic Healthcare Professional (HCP) Survey</b><br>
         • <b>Sample:</b> N=350 verified simulated clinicians (Internal Medicine, Family Practice, Endocrinology, NPs).<br>
         • <b>Methodology:</b> Probabilistic simulation seeded at <code>RANDOM_SEED=42</code> with specialty-conditioned adoption profiles.<br>
         • <b>Ethics & Compliance:</b> Certified synthetic research simulation. No real patient health information (PHI) or identifiable provider records are exposed.
         </p>
-        <hr style="border:none; border-top:1px solid #F1F5F9; margin:14px 0;">
-        <p style="font-size:0.88rem; color:#475569; line-height:1.6;">
+        <hr style="border:none; border-top:1px solid #DCE2EA; margin:10px 0;">
+        <p style="font-size:0.80rem; color:#667487; line-height:1.5;">
         <b>3. Statistical Governance</b><br>
         • Pearson Chi-Square tests are validated against Cochran's criteria (no cells with expected frequency &lt;1; &le;20% cells &lt;5).<br>
         • Likert scale analyses report both parametric (mean, std) and non-parametric (median, IQR, top-box %) measures.<br>
