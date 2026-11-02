@@ -1,0 +1,6 @@
+Barrier_Code,Barrier_Name,Domain,Impact_Level
+Q11_BARRIER_PRIOR_AUTH,Prior Authorization & Step Therapy,Administrative / Payer,Critical
+Q12_BARRIER_OUT_OF_POCKET_COST,Patient Out-of-Pocket Copay,Affordability / Financial,Critical
+Q13_BARRIER_SIDE_EFFECTS,Clinical Side Effects (GI / Mycotic),Clinical Safety,Moderate
+Q14_BARRIER_SUPPLY_SHORTAGES,Supply Shortages & Stockouts,Supply Chain,High
+Q15_BARRIER_PATIENT_NEEDLE_HESITATION,Patient Needle Hesitation,Patient Administration,Moderate to High

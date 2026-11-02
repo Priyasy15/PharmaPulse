@@ -1,0 +1,6 @@
+drug_class,stated_preference_pct,observed_part_d_claims_share_pct,adoption_gap_pct_pts,realization_ratio,market_status,underlying_commercial_driver
+GLP-1 RA,50.0,10.89,39.11,0.22,Suppressed Adoption (High Unmet Access Demand),"Restrictive Prior Authorization, Step Therapy, and High Patient Out-of-Pocket Copays"
+SGLT2 Inhibitor,34.9,12.02,22.88,0.34,Suppressed Adoption (High Unmet Access Demand),"Restrictive Prior Authorization, Step Therapy, and High Patient Out-of-Pocket Copays"
+DPP-4 Inhibitor,6.3,4.91,1.39,0.78,Balanced Realization,Moderate Access and Formulary Stability
+Sulfonylurea,5.4,20.53,-15.13,3.8,Legacy Inertia (Over-Prescribed vs Guidelines),"Zero Payer Hurdles, Low Generic Copay ($0-$15), and Prescribing Habit"
+Basal Insulin,3.4,3.99,-0.59,1.17,Balanced Realization,Moderate Access and Formulary Stability

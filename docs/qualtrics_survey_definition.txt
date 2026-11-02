@@ -1,0 +1,184 @@
+[[AdvancedFormat]]
+[[SurveyName:PharmaPulse Type 2 Diabetes (T2D) Treatment Landscape & Commercial Adoption Survey]]
+
+[[Block:Screening & Demographics]]
+[[Question:DB]]
+<b>PharmaPulse Type 2 Diabetes (T2D) Treatment Landscape & Commercial Adoption Survey</b><br><br>INDEPENDENT RESEARCH SIMULATION DISCLAIMER: This survey prototype and any associated data are created for academic, educational, and commercial analytics demonstration purposes. It is not sponsored by, endorsed by, or affiliated with any commercial pharmaceutical company, nor does it represent actual patient medical records or unverified clinical claims.<br><br><b>Screening Criteria:</b> Minimum 15 adult T2D patients managed per month in the United States
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:Q1_SPECIALTY]]
+What is your primary medical specialty?
+[[Choices]]
+Internal Medicine
+Family Practice
+Endocrinology, Diabetes & Metabolism
+Nurse Practitioner
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:Q2_YEARS_EXPERIENCE]]
+How many years have you been in active clinical practice post-training?
+[[Choices]]
+<5 years
+5-10 years
+11-20 years
+>20 years
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:Q3_PRACTICE_SETTING]]
+Which best describes your primary clinical practice setting?
+[[Choices]]
+Academic Medical Center
+Community Hospital System
+Private Group Practice
+Solo Practice
+FQHC / Community Health Center
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:Q4_MONTHLY_T2D_PATIENTS]]
+Approximately how many adult patients with Type 2 Diabetes do you personally manage each month?
+[[Choices]]
+15-30
+31-60
+61-100
+>100
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:Q5_PCT_MEDICARE_PATIENTS]]
+Approximately what percentage of your T2D patient panel is insured under Medicare (Part D / Medicare Advantage)?
+[[Choices]]
+<25%
+25-50%
+51-75%
+>75%
+
+[[Block:Treatment Preference]]
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:Q6_FIRST_LINE_PREFERENCE]]
+For a newly diagnosed, treatment-naive T2D patient with HbA1c 7.5%-8.5% and no established cardiovascular disease, what is your standard initial pharmacotherapy?
+[[Choices]]
+Metformin Monotherapy
+Metformin + SGLT2 Inhibitor
+Metformin + GLP-1 Receptor Agonist
+SGLT2 Inhibitor Monotherapy
+GLP-1 Receptor Agonist Monotherapy
+DPP-4 Inhibitor Monotherapy
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:Q7_SECOND_LINE_ASCVD_PREFERENCE]]
+For a T2D patient on Metformin with uncontrolled HbA1c (8.4%) and established Atherosclerotic Cardiovascular Disease (ASCVD), which second-line class do you prioritize?
+[[Choices]]
+GLP-1 Receptor Agonist (e.g. Semaglutide, Dulaglutide)
+SGLT2 Inhibitor (e.g. Empagliflozin, Dapagliflozin)
+DPP-4 Inhibitor (e.g. Sitagliptin)
+Sulfonylurea (e.g. Glimepiride)
+Basal Insulin
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:Q8_SECOND_LINE_CKD_HF_PREFERENCE]]
+For a T2D patient with microalbuminuria (CKD) or Heart Failure with preserved/reduced ejection fraction, which add-on therapy do you prioritize?
+[[Choices]]
+SGLT2 Inhibitor
+GLP-1 Receptor Agonist
+DPP-4 Inhibitor
+Sulfonylurea
+Basal Insulin
+
+[[Block:Awareness & Evidence]]
+
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:Q9_FAMILIARITY_GLP1]]
+<b>Rate your familiarity with the cardiovascular and renal outcome trial evidence (CVOTs) for GLP-1 Receptor Agonists.</b>
+[[Choices]]
+1 - Very Low
+2 - Low
+3 - Moderate
+4 - High
+5 - Very High / Expert
+
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:Q10_FAMILIARITY_SGLT2]]
+<b>Rate your familiarity with the heart failure and renal protection outcome trials for SGLT2 Inhibitors.</b>
+[[Choices]]
+1 - Very Low
+2 - Low
+3 - Moderate
+4 - High
+5 - Very High / Expert
+
+[[Block:Adoption Barriers]]
+
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:Q11_BARRIER_PRIOR_AUTH]]
+<b>To what extent is Prior Authorization / Step Therapy documentation a barrier to prescribing newer T2D therapies (GLP-1 / SGLT2i)?</b>
+[[Choices]]
+1 - Not a Barrier
+2 - Minor Barrier
+3 - Moderate Barrier
+4 - Significant Barrier
+5 - Critical Barrier
+
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:Q12_BARRIER_OUT_OF_POCKET_COST]]
+<b>To what extent is high patient out-of-pocket copay / deductible a barrier to patient adherence and initiation?</b>
+[[Choices]]
+1 - Not a Barrier
+2 - Minor Barrier
+3 - Moderate Barrier
+4 - Significant Barrier
+5 - Critical Barrier
+
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:Q13_BARRIER_SIDE_EFFECTS]]
+<b>To what extent do clinical side-effects (e.g. GI nausea with GLP-1s, mycotic infections/eGFR limits with SGLT2s) prevent you from prescribing?</b>
+[[Choices]]
+1 - Not a Barrier
+2 - Minor Barrier
+3 - Moderate Barrier
+4 - Significant Barrier
+5 - Critical Barrier
+
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:Q14_BARRIER_SUPPLY_SHORTAGES]]
+<b>To what extent have national supply chain shortages / dispensing delays restricted your adoption of newer incretin therapies?</b>
+[[Choices]]
+1 - Not a Barrier
+2 - Minor Barrier
+3 - Moderate Barrier
+4 - Significant Barrier
+5 - Critical Barrier
+
+[[Question:MC:SingleAnswer:Horizontal]]
+[[ID:Q15_BARRIER_PATIENT_NEEDLE_HESITATION]]
+<b>To what extent is patient needle resistance or anxiety regarding subcutaneous injection a barrier for injectable GLP-1 therapies?</b>
+[[Choices]]
+1 - Not a Barrier
+2 - Minor Barrier
+3 - Moderate Barrier
+4 - Significant Barrier
+5 - Critical Barrier
+
+[[Block:Clinical Decision Drivers]]
+
+[[Question:MC:SingleAnswer:Vertical]]
+[[ID:Q16_PRIMARY_PRESCRIBING_DRIVER]]
+When deciding between oral SGLT2i, injectable GLP-1 RA, and legacy therapies, what is your single most important decision factor?
+[[Choices]]
+Glycemic (HbA1c) Efficacy
+Cardiovascular Risk Reduction (CVOT Data)
+Renal / CKD Progression Protection
+Weight Loss / Body Composition Benefit
+Patient Out-of-Pocket Cost & Tier 1/2 Coverage
+Tolerability & Low Hypoglycemia Risk
+
+[[Block:Commercial Opportunities]]
+
+[[Question:MC:MultipleAnswer:Vertical]]
+[[ID:Q17_UNMET_NEEDS]]
+Which commercial innovation or support program would most improve your ability to treat T2D patients effectively?
+[[Choices]]
+Real-time Electronic Prior Authorization (ePA) integration
+Manufacturer Copay Assistance bridging for Medicare Part D / Low Income
+High-potency Oral GLP-1 Formulation with lower GI symptoms
+Fixed-dose SGLT2i + GLP-1 RA combination pill
+Multilingual Patient Injection & Lifestyle Navigation apps

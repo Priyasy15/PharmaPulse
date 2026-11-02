@@ -1,0 +1,31 @@
+State_Code,State_Name,Census_Region
+CA,California,West
+TX,Texas,South
+FL,Florida,South
+NY,New York,Northeast
+PA,Pennsylvania,Northeast
+IL,Illinois,Midwest
+OH,Ohio,Midwest
+NC,North Carolina,South
+MI,Michigan,Midwest
+GA,Georgia,South
+NJ,New Jersey,Northeast
+VA,Virginia,South
+WA,Washington,West
+AZ,Arizona,West
+MA,Massachusetts,Northeast
+TN,Tennessee,South
+IN,Indiana,Midwest
+MO,Missouri,Midwest
+MD,Maryland,South
+WI,Wisconsin,Midwest
+CO,Colorado,West
+MN,Minnesota,Midwest
+SC,South Carolina,South
+AL,Alabama,South
+LA,Louisiana,South
+KY,Kentucky,South
+OR,Oregon,West
+OK,Oklahoma,South
+CT,Connecticut,Northeast
+UT,Utah,West

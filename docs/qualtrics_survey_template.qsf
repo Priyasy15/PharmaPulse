@@ -1,0 +1,534 @@
+{
+  "SurveyEntry": {
+    "SurveyID": "SV_PharmaPulseT2D",
+    "SurveyName": "PharmaPulse Type 2 Diabetes (T2D) Treatment Landscape & Commercial Adoption Survey",
+    "SurveyDescription": "INDEPENDENT RESEARCH SIMULATION DISCLAIMER: This survey prototype and any associated data are created for academic, educational, and commercial analytics demonstration purposes. It is not sponsored by, endorsed by, or affiliated with any commercial pharmaceutical company, nor does it represent actual patient medical records or unverified clinical claims.",
+    "SurveyStatus": "Active",
+    "SurveyStartDate": "2024-01-01 00:00:00",
+    "SurveyExpirationDate": "2026-12-31 00:00:00",
+    "SurveyCreationDate": "2024-01-01 00:00:00"
+  },
+  "SurveyElements": [
+    {
+      "SurveyID": "SV_PharmaPulseT2D",
+      "Element": "SQ",
+      "PrimaryAttribute": "Q1_SPECIALTY",
+      "SecondaryAttribute": "What is your primary medical specialty?",
+      "Payload": {
+        "QuestionText": "What is your primary medical specialty?",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "DataExportTag": "Q1_SPECIALTY",
+        "QuestionDescription": "What is your primary medical specialty?",
+        "Choices": {
+          "1": {
+            "Display": "Internal Medicine"
+          },
+          "2": {
+            "Display": "Family Practice"
+          },
+          "3": {
+            "Display": "Endocrinology, Diabetes & Metabolism"
+          },
+          "4": {
+            "Display": "Nurse Practitioner"
+          }
+        }
+      }
+    },
+    {
+      "SurveyID": "SV_PharmaPulseT2D",
+      "Element": "SQ",
+      "PrimaryAttribute": "Q2_YEARS_EXPERIENCE",
+      "SecondaryAttribute": "How many years have you been in active clinical practice post-training?",
+      "Payload": {
+        "QuestionText": "How many years have you been in active clinical practice post-training?",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "DataExportTag": "Q2_YEARS_EXPERIENCE",
+        "QuestionDescription": "How many years have you been in active clinical practice post-training?",
+        "Choices": {
+          "1": {
+            "Display": "<5 years"
+          },
+          "2": {
+            "Display": "5-10 years"
+          },
+          "3": {
+            "Display": "11-20 years"
+          },
+          "4": {
+            "Display": ">20 years"
+          }
+        }
+      }
+    },
+    {
+      "SurveyID": "SV_PharmaPulseT2D",
+      "Element": "SQ",
+      "PrimaryAttribute": "Q3_PRACTICE_SETTING",
+      "SecondaryAttribute": "Which best describes your primary clinical practice setting?",
+      "Payload": {
+        "QuestionText": "Which best describes your primary clinical practice setting?",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "DataExportTag": "Q3_PRACTICE_SETTING",
+        "QuestionDescription": "Which best describes your primary clinical practice setting?",
+        "Choices": {
+          "1": {
+            "Display": "Academic Medical Center"
+          },
+          "2": {
+            "Display": "Community Hospital System"
+          },
+          "3": {
+            "Display": "Private Group Practice"
+          },
+          "4": {
+            "Display": "Solo Practice"
+          },
+          "5": {
+            "Display": "FQHC / Community Health Center"
+          }
+        }
+      }
+    },
+    {
+      "SurveyID": "SV_PharmaPulseT2D",
+      "Element": "SQ",
+      "PrimaryAttribute": "Q4_MONTHLY_T2D_PATIENTS",
+      "SecondaryAttribute": "Approximately how many adult patients with Type 2 Diabetes do you personally manage each month?",
+      "Payload": {
+        "QuestionText": "Approximately how many adult patients with Type 2 Diabetes do you personally manage each month?",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "DataExportTag": "Q4_MONTHLY_T2D_PATIENTS",
+        "QuestionDescription": "Approximately how many adult patients with Type 2 Diabetes do you personally manage each month?",
+        "Choices": {
+          "1": {
+            "Display": "15-30"
+          },
+          "2": {
+            "Display": "31-60"
+          },
+          "3": {
+            "Display": "61-100"
+          },
+          "4": {
+            "Display": ">100"
+          }
+        }
+      }
+    },
+    {
+      "SurveyID": "SV_PharmaPulseT2D",
+      "Element": "SQ",
+      "PrimaryAttribute": "Q5_PCT_MEDICARE_PATIENTS",
+      "SecondaryAttribute": "Approximately what percentage of your T2D patient panel is insured under Medicare (Part D / Medicare Advantage)?",
+      "Payload": {
+        "QuestionText": "Approximately what percentage of your T2D patient panel is insured under Medicare (Part D / Medicare Advantage)?",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "DataExportTag": "Q5_PCT_MEDICARE_PATIENTS",
+        "QuestionDescription": "Approximately what percentage of your T2D patient panel is insured under Medicare (Part D / Medicare Advantage)?",
+        "Choices": {
+          "1": {
+            "Display": "<25%"
+          },
+          "2": {
+            "Display": "25-50%"
+          },
+          "3": {
+            "Display": "51-75%"
+          },
+          "4": {
+            "Display": ">75%"
+          }
+        }
+      }
+    },
+    {
+      "SurveyID": "SV_PharmaPulseT2D",
+      "Element": "SQ",
+      "PrimaryAttribute": "Q6_FIRST_LINE_PREFERENCE",
+      "SecondaryAttribute": "For a newly diagnosed, treatment-naive T2D patient with HbA1c 7.5%-8.5% and no established cardiovascular disease, what is your standard initial pharmacotherapy?",
+      "Payload": {
+        "QuestionText": "For a newly diagnosed, treatment-naive T2D patient with HbA1c 7.5%-8.5% and no established cardiovascular disease, what is your standard initial pharmacotherapy?",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "DataExportTag": "Q6_FIRST_LINE_PREFERENCE",
+        "QuestionDescription": "For a newly diagnosed, treatment-naive T2D patient with HbA1c 7.5%-8.5% and no established cardiovascular disease, what is your standard initial pharmacotherapy?",
+        "Choices": {
+          "1": {
+            "Display": "Metformin Monotherapy"
+          },
+          "2": {
+            "Display": "Metformin + SGLT2 Inhibitor"
+          },
+          "3": {
+            "Display": "Metformin + GLP-1 Receptor Agonist"
+          },
+          "4": {
+            "Display": "SGLT2 Inhibitor Monotherapy"
+          },
+          "5": {
+            "Display": "GLP-1 Receptor Agonist Monotherapy"
+          },
+          "6": {
+            "Display": "DPP-4 Inhibitor Monotherapy"
+          }
+        }
+      }
+    },
+    {
+      "SurveyID": "SV_PharmaPulseT2D",
+      "Element": "SQ",
+      "PrimaryAttribute": "Q7_SECOND_LINE_ASCVD_PREFERENCE",
+      "SecondaryAttribute": "For a T2D patient on Metformin with uncontrolled HbA1c (8.4%) and established Atherosclerotic Cardiovascular Disease (ASCVD), which second-line class do you prioritize?",
+      "Payload": {
+        "QuestionText": "For a T2D patient on Metformin with uncontrolled HbA1c (8.4%) and established Atherosclerotic Cardiovascular Disease (ASCVD), which second-line class do you prioritize?",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "DataExportTag": "Q7_SECOND_LINE_ASCVD_PREFERENCE",
+        "QuestionDescription": "For a T2D patient on Metformin with uncontrolled HbA1c (8.4%) and established Atherosclerotic Cardiovascular Disease (ASCVD), which second-line class do you prioritize?",
+        "Choices": {
+          "1": {
+            "Display": "GLP-1 Receptor Agonist (e.g. Semaglutide, Dulaglutide)"
+          },
+          "2": {
+            "Display": "SGLT2 Inhibitor (e.g. Empagliflozin, Dapagliflozin)"
+          },
+          "3": {
+            "Display": "DPP-4 Inhibitor (e.g. Sitagliptin)"
+          },
+          "4": {
+            "Display": "Sulfonylurea (e.g. Glimepiride)"
+          },
+          "5": {
+            "Display": "Basal Insulin"
+          }
+        }
+      }
+    },
+    {
+      "SurveyID": "SV_PharmaPulseT2D",
+      "Element": "SQ",
+      "PrimaryAttribute": "Q8_SECOND_LINE_CKD_HF_PREFERENCE",
+      "SecondaryAttribute": "For a T2D patient with microalbuminuria (CKD) or Heart Failure with preserved/reduced ejection fraction, which add-on therapy do you prioritize?",
+      "Payload": {
+        "QuestionText": "For a T2D patient with microalbuminuria (CKD) or Heart Failure with preserved/reduced ejection fraction, which add-on therapy do you prioritize?",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "DataExportTag": "Q8_SECOND_LINE_CKD_HF_PREFERENCE",
+        "QuestionDescription": "For a T2D patient with microalbuminuria (CKD) or Heart Failure with preserved/reduced ejection fraction, which add-on therapy do you prioritize?",
+        "Choices": {
+          "1": {
+            "Display": "SGLT2 Inhibitor"
+          },
+          "2": {
+            "Display": "GLP-1 Receptor Agonist"
+          },
+          "3": {
+            "Display": "DPP-4 Inhibitor"
+          },
+          "4": {
+            "Display": "Sulfonylurea"
+          },
+          "5": {
+            "Display": "Basal Insulin"
+          }
+        }
+      }
+    },
+    {
+      "SurveyID": "SV_PharmaPulseT2D",
+      "Element": "SQ",
+      "PrimaryAttribute": "Q9_FAMILIARITY_GLP1",
+      "SecondaryAttribute": "Rate your familiarity with the cardiovascular and renal outcome trial evidence (CVOTs) for GLP-1 Receptor Agonists.",
+      "Payload": {
+        "QuestionText": "Rate your familiarity with the cardiovascular and renal outcome trial evidence (CVOTs) for GLP-1 Receptor Agonists.",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "DataExportTag": "Q9_FAMILIARITY_GLP1",
+        "QuestionDescription": "Rate your familiarity with the cardiovascular and renal outcome trial evidence (CVOTs) for GLP-1 Receptor Agonists.",
+        "Choices": {
+          "1": {
+            "Display": "1 - Very Low"
+          },
+          "2": {
+            "Display": "2 - Low"
+          },
+          "3": {
+            "Display": "3 - Moderate"
+          },
+          "4": {
+            "Display": "4 - High"
+          },
+          "5": {
+            "Display": "5 - Very High / Expert"
+          }
+        }
+      }
+    },
+    {
+      "SurveyID": "SV_PharmaPulseT2D",
+      "Element": "SQ",
+      "PrimaryAttribute": "Q10_FAMILIARITY_SGLT2",
+      "SecondaryAttribute": "Rate your familiarity with the heart failure and renal protection outcome trials for SGLT2 Inhibitors.",
+      "Payload": {
+        "QuestionText": "Rate your familiarity with the heart failure and renal protection outcome trials for SGLT2 Inhibitors.",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "DataExportTag": "Q10_FAMILIARITY_SGLT2",
+        "QuestionDescription": "Rate your familiarity with the heart failure and renal protection outcome trials for SGLT2 Inhibitors.",
+        "Choices": {
+          "1": {
+            "Display": "1 - Very Low"
+          },
+          "2": {
+            "Display": "2 - Low"
+          },
+          "3": {
+            "Display": "3 - Moderate"
+          },
+          "4": {
+            "Display": "4 - High"
+          },
+          "5": {
+            "Display": "5 - Very High / Expert"
+          }
+        }
+      }
+    },
+    {
+      "SurveyID": "SV_PharmaPulseT2D",
+      "Element": "SQ",
+      "PrimaryAttribute": "Q11_BARRIER_PRIOR_AUTH",
+      "SecondaryAttribute": "To what extent is Prior Authorization / Step Therapy documentation a barrier to prescribing newer T2D therapies (GLP-1 / SGLT2i)?",
+      "Payload": {
+        "QuestionText": "To what extent is Prior Authorization / Step Therapy documentation a barrier to prescribing newer T2D therapies (GLP-1 / SGLT2i)?",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "DataExportTag": "Q11_BARRIER_PRIOR_AUTH",
+        "QuestionDescription": "To what extent is Prior Authorization / Step Therapy documentation a barrier to prescribing newer T2D therapies (GLP-1 / SGLT2i)?",
+        "Choices": {
+          "1": {
+            "Display": "1 - Not a Barrier"
+          },
+          "2": {
+            "Display": "2 - Minor Barrier"
+          },
+          "3": {
+            "Display": "3 - Moderate Barrier"
+          },
+          "4": {
+            "Display": "4 - Significant Barrier"
+          },
+          "5": {
+            "Display": "5 - Critical Barrier"
+          }
+        }
+      }
+    },
+    {
+      "SurveyID": "SV_PharmaPulseT2D",
+      "Element": "SQ",
+      "PrimaryAttribute": "Q12_BARRIER_OUT_OF_POCKET_COST",
+      "SecondaryAttribute": "To what extent is high patient out-of-pocket copay / deductible a barrier to patient adherence and initiation?",
+      "Payload": {
+        "QuestionText": "To what extent is high patient out-of-pocket copay / deductible a barrier to patient adherence and initiation?",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "DataExportTag": "Q12_BARRIER_OUT_OF_POCKET_COST",
+        "QuestionDescription": "To what extent is high patient out-of-pocket copay / deductible a barrier to patient adherence and initiation?",
+        "Choices": {
+          "1": {
+            "Display": "1 - Not a Barrier"
+          },
+          "2": {
+            "Display": "2 - Minor Barrier"
+          },
+          "3": {
+            "Display": "3 - Moderate Barrier"
+          },
+          "4": {
+            "Display": "4 - Significant Barrier"
+          },
+          "5": {
+            "Display": "5 - Critical Barrier"
+          }
+        }
+      }
+    },
+    {
+      "SurveyID": "SV_PharmaPulseT2D",
+      "Element": "SQ",
+      "PrimaryAttribute": "Q13_BARRIER_SIDE_EFFECTS",
+      "SecondaryAttribute": "To what extent do clinical side-effects (e.g. GI nausea with GLP-1s, mycotic infections/eGFR limits with SGLT2s) prevent you from prescribing?",
+      "Payload": {
+        "QuestionText": "To what extent do clinical side-effects (e.g. GI nausea with GLP-1s, mycotic infections/eGFR limits with SGLT2s) prevent you from prescribing?",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "DataExportTag": "Q13_BARRIER_SIDE_EFFECTS",
+        "QuestionDescription": "To what extent do clinical side-effects (e.g. GI nausea with GLP-1s, mycotic infections/eGFR limits with SGLT2s) prevent you from prescribing?",
+        "Choices": {
+          "1": {
+            "Display": "1 - Not a Barrier"
+          },
+          "2": {
+            "Display": "2 - Minor Barrier"
+          },
+          "3": {
+            "Display": "3 - Moderate Barrier"
+          },
+          "4": {
+            "Display": "4 - Significant Barrier"
+          },
+          "5": {
+            "Display": "5 - Critical Barrier"
+          }
+        }
+      }
+    },
+    {
+      "SurveyID": "SV_PharmaPulseT2D",
+      "Element": "SQ",
+      "PrimaryAttribute": "Q14_BARRIER_SUPPLY_SHORTAGES",
+      "SecondaryAttribute": "To what extent have national supply chain shortages / dispensing delays restricted your adoption of newer incretin therapies?",
+      "Payload": {
+        "QuestionText": "To what extent have national supply chain shortages / dispensing delays restricted your adoption of newer incretin therapies?",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "DataExportTag": "Q14_BARRIER_SUPPLY_SHORTAGES",
+        "QuestionDescription": "To what extent have national supply chain shortages / dispensing delays restricted your adoption of newer incretin therapies?",
+        "Choices": {
+          "1": {
+            "Display": "1 - Not a Barrier"
+          },
+          "2": {
+            "Display": "2 - Minor Barrier"
+          },
+          "3": {
+            "Display": "3 - Moderate Barrier"
+          },
+          "4": {
+            "Display": "4 - Significant Barrier"
+          },
+          "5": {
+            "Display": "5 - Critical Barrier"
+          }
+        }
+      }
+    },
+    {
+      "SurveyID": "SV_PharmaPulseT2D",
+      "Element": "SQ",
+      "PrimaryAttribute": "Q15_BARRIER_PATIENT_NEEDLE_HESITATION",
+      "SecondaryAttribute": "To what extent is patient needle resistance or anxiety regarding subcutaneous injection a barrier for injectable GLP-1 therapies?",
+      "Payload": {
+        "QuestionText": "To what extent is patient needle resistance or anxiety regarding subcutaneous injection a barrier for injectable GLP-1 therapies?",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "DataExportTag": "Q15_BARRIER_PATIENT_NEEDLE_HESITATION",
+        "QuestionDescription": "To what extent is patient needle resistance or anxiety regarding subcutaneous injection a barrier for injectable GLP-1 therapies?",
+        "Choices": {
+          "1": {
+            "Display": "1 - Not a Barrier"
+          },
+          "2": {
+            "Display": "2 - Minor Barrier"
+          },
+          "3": {
+            "Display": "3 - Moderate Barrier"
+          },
+          "4": {
+            "Display": "4 - Significant Barrier"
+          },
+          "5": {
+            "Display": "5 - Critical Barrier"
+          }
+        }
+      }
+    },
+    {
+      "SurveyID": "SV_PharmaPulseT2D",
+      "Element": "SQ",
+      "PrimaryAttribute": "Q16_PRIMARY_PRESCRIBING_DRIVER",
+      "SecondaryAttribute": "When deciding between oral SGLT2i, injectable GLP-1 RA, and legacy therapies, what is your single most important decision factor?",
+      "Payload": {
+        "QuestionText": "When deciding between oral SGLT2i, injectable GLP-1 RA, and legacy therapies, what is your single most important decision factor?",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "DataExportTag": "Q16_PRIMARY_PRESCRIBING_DRIVER",
+        "QuestionDescription": "When deciding between oral SGLT2i, injectable GLP-1 RA, and legacy therapies, what is your single most important decision factor?",
+        "Choices": {
+          "1": {
+            "Display": "Glycemic (HbA1c) Efficacy"
+          },
+          "2": {
+            "Display": "Cardiovascular Risk Reduction (CVOT Data)"
+          },
+          "3": {
+            "Display": "Renal / CKD Progression Protection"
+          },
+          "4": {
+            "Display": "Weight Loss / Body Composition Benefit"
+          },
+          "5": {
+            "Display": "Patient Out-of-Pocket Cost & Tier 1/2 Coverage"
+          },
+          "6": {
+            "Display": "Tolerability & Low Hypoglycemia Risk"
+          }
+        }
+      }
+    },
+    {
+      "SurveyID": "SV_PharmaPulseT2D",
+      "Element": "SQ",
+      "PrimaryAttribute": "Q17_UNMET_NEEDS",
+      "SecondaryAttribute": "Which commercial innovation or support program would most improve your ability to treat T2D patients effectively?",
+      "Payload": {
+        "QuestionText": "Which commercial innovation or support program would most improve your ability to treat T2D patients effectively?",
+        "QuestionType": "MC",
+        "Selector": "MAVR",
+        "SubSelector": "TX",
+        "DataExportTag": "Q17_UNMET_NEEDS",
+        "QuestionDescription": "Which commercial innovation or support program would most improve your ability to treat T2D patients effectively?",
+        "Choices": {
+          "1": {
+            "Display": "Real-time Electronic Prior Authorization (ePA) integration"
+          },
+          "2": {
+            "Display": "Manufacturer Copay Assistance bridging for Medicare Part D / Low Income"
+          },
+          "3": {
+            "Display": "High-potency Oral GLP-1 Formulation with lower GI symptoms"
+          },
+          "4": {
+            "Display": "Fixed-dose SGLT2i + GLP-1 RA combination pill"
+          },
+          "5": {
+            "Display": "Multilingual Patient Injection & Lifestyle Navigation apps"
+          }
+        }
+      }
+    }
+  ]
+}

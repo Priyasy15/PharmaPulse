@@ -1,0 +1,5 @@
+Specialty_Key,Specialty_Name,Specialty_Category,Prescribing_Tier
+INTERNAL MEDICINE,Internal Medicine,Primary Care,High Volume
+FAMILY PRACTICE,Family Practice,Primary Care,High Volume
+"ENDOCRINOLOGY, DIABETES & METABOLISM","Endocrinology, Diabetes & Metabolism",Subspecialty,High Adoption / Guideline Pioneer
+NURSE PRACTITIONER,Nurse Practitioner,Advanced Practice Provider,Growing Frontline

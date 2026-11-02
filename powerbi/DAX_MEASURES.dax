@@ -1,0 +1,178 @@
+// ==============================================================================
+// PharmaPulse Power BI DAX Measures Catalog
+// Type 2 Diabetes Commercial Insights & Prescribing Landscape Model
+// ==============================================================================
+
+// ------------------------------------------------------------------------------
+// 1. CORE VOLUME & SPEND MEASURES (CMS Part D)
+// ------------------------------------------------------------------------------
+
+Total Claims = 
+SUM(Fact_CMS_Prescribing[TOT_CLMS])
+
+Total 30-Day Fills = 
+SUM(Fact_CMS_Prescribing[TOT_30DAY_FILLS])
+
+Total Gross Drug Cost = 
+SUM(Fact_CMS_Prescribing[TOT_DRUG_CST])
+
+Total Beneficiaries Reached = 
+SUM(Fact_CMS_Prescribing[TOT_BENES])
+
+Distinct Active Prescribers = 
+DISTINCTCOUNT(Fact_CMS_Prescribing[PRSCRBR_NPI])
+
+// ------------------------------------------------------------------------------
+// 2. FINANCIAL & EFFICIENCY METRICS
+// ------------------------------------------------------------------------------
+
+Average Cost Per Claim = 
+DIVIDE(
+    [Total Gross Drug Cost],
+    [Total Claims],
+    0
+)
+
+Average Cost Per 30-Day Fill = 
+DIVIDE(
+    [Total Gross Drug Cost],
+    [Total 30-Day Fills],
+    0
+)
+
+Average Claims Per Prescriber = 
+DIVIDE(
+    [Total Claims],
+    [Distinct Active Prescribers],
+    0
+)
+
+Average Claims Per Beneficiary = 
+DIVIDE(
+    [Total Claims],
+    [Total Beneficiaries Reached],
+    0
+)
+
+// ------------------------------------------------------------------------------
+// 3. MARKET SHARE & PENETRATION MEASURES
+// ------------------------------------------------------------------------------
+
+Claims Share % = 
+DIVIDE(
+    [Total Claims],
+    CALCULATE([Total Claims], ALL(Dim_Drug_Product)),
+    0
+)
+
+Cost Share % = 
+DIVIDE(
+    [Total Gross Drug Cost],
+    CALCULATE([Total Gross Drug Cost], ALL(Dim_Drug_Product)),
+    0
+)
+
+GLP1 Claims Volume = 
+CALCULATE(
+    [Total Claims],
+    Dim_Drug_Product[Drug_Class] IN {"GLP-1 RA", "GLP-1 / GIP Dual Agonist"}
+)
+
+GLP1 Volume Penetration % = 
+DIVIDE(
+    [GLP1 Claims Volume],
+    [Total Claims],
+    0
+)
+
+SGLT2 Claims Volume = 
+CALCULATE(
+    [Total Claims],
+    Dim_Drug_Product[Drug_Class] = "SGLT2 Inhibitor"
+)
+
+SGLT2 Volume Penetration % = 
+DIVIDE(
+    [SGLT2 Claims Volume],
+    [Total Claims],
+    0
+)
+
+Newer Therapy Combined Share % = 
+DIVIDE(
+    CALCULATE(
+        [Total Claims],
+        Dim_Drug_Product[Is_Newer_Incretin_SGLT2] = TRUE()
+    ),
+    [Total Claims],
+    0
+)
+
+// ------------------------------------------------------------------------------
+// 4. HCP SURVEY ANALYTICS MEASURES
+// ------------------------------------------------------------------------------
+
+Total Survey Respondents = 
+COUNTROWS(Fact_Survey_Responses)
+
+Mean Prior Auth Barrier Score = 
+AVERAGE(Fact_Survey_Responses[Q11_BARRIER_PRIOR_AUTH])
+
+Mean Out of Pocket Cost Barrier Score = 
+AVERAGE(Fact_Survey_Responses[Q12_BARRIER_OUT_OF_POCKET_COST])
+
+Mean Side Effects Barrier Score = 
+AVERAGE(Fact_Survey_Responses[Q13_BARRIER_SIDE_EFFECTS])
+
+Mean Supply Shortage Barrier Score = 
+AVERAGE(Fact_Survey_Responses[Q14_BARRIER_SUPPLY_SHORTAGES])
+
+Mean Needle Hesitation Barrier Score = 
+AVERAGE(Fact_Survey_Responses[Q15_BARRIER_PATIENT_NEEDLE_HESITATION])
+
+Composite Barrier Severity Index = 
+AVERAGE(Fact_Survey_Responses[COMPOSITE_BARRIER_INDEX])
+
+Prior Auth Top-Box % = 
+DIVIDE(
+    CALCULATE(
+        COUNTROWS(Fact_Survey_Responses),
+        Fact_Survey_Responses[Q11_BARRIER_PRIOR_AUTH] >= 4
+    ),
+    [Total Survey Respondents],
+    0
+)
+
+Cost Barrier Top-Box % = 
+DIVIDE(
+    CALCULATE(
+        COUNTROWS(Fact_Survey_Responses),
+        Fact_Survey_Responses[Q12_BARRIER_OUT_OF_POCKET_COST] >= 4
+    ),
+    [Total Survey Respondents],
+    0
+)
+
+// ------------------------------------------------------------------------------
+// 5. STATED VS OBSERVED GAP MEASURES
+// ------------------------------------------------------------------------------
+
+Stated GLP1 ASCVD Preference % = 
+DIVIDE(
+    CALCULATE(
+        COUNTROWS(Fact_Survey_Responses),
+        CONTAINSSTRING(Fact_Survey_Responses[Q7_SECOND_LINE_ASCVD_PREFERENCE], "GLP-1")
+    ),
+    [Total Survey Respondents],
+    0
+)
+
+GLP1 Stated vs Observed Gap % = 
+[Stated GLP1 ASCVD Preference %] - [GLP1 Volume Penetration %]
+
+Adoption Realization Ratio = 
+DIVIDE(
+    [GLP1 Volume Penetration %],
+    [Stated GLP1 ASCVD Preference %],
+    0
+)
